@@ -87,6 +87,7 @@ const Main = () => {
   const [type, setType] = useState(TYPE_OPTIONS[0])
   const [color, setColor] = useState(COLORS[0])
   const [option, setOption] = useState(CARD_OPTION[0])
+  const [resetClicked, setReset] = useState(false)
 
   return (
     <Background>
@@ -101,11 +102,14 @@ const Main = () => {
           typeOptions={TYPE_OPTIONS}
           colorOptions={COLORS}
           cardOptions={CARD_OPTION}
+          setReset={setReset}
         />
         <CardView
           type={type}
           color={color}
           option={option}
+          resetClicked={resetClicked}
+          setReset={setReset}
         />
       </MainWrapper>
     </Background>

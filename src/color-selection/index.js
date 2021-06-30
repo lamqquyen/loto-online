@@ -16,10 +16,19 @@ const StyledWatermark = styled.div`
   text-align: center;
 `
 
+const StyledButton = styled.button`
+  width: 100%;
+  font-size: 18px;
+  line-height: 36px;
+  color: white;
+  background: black;
+  border: none;
+`
+
 const ColorSelection = (props) => {
   const {colorOptions, color, setColor,
     typeOptions, type, setType,
-  cardOptions, option, setOption} = props
+  cardOptions, option, setOption, setReset} = props
 
   return <Wrapper>
     <Dropdown
@@ -41,6 +50,10 @@ const ColorSelection = (props) => {
       onChangeData={setOption}
     />}
 
+    <StyledButton onClick={() => setReset(true)}>
+      Reset
+    </StyledButton>
+
     <StyledWatermark>
       <b>BUILT BY JACKIE LIN</b><br />"CỜ BẠC LÀ PHẠM PHÁP NGHE CHƯA"
     </StyledWatermark>
@@ -56,7 +69,8 @@ ColorSelection.propTypes = {
   setType: PropTypes.func,
   cardOptions: PropTypes.array,
   option: PropTypes.object,
-  setOption: PropTypes.func
+  setOption: PropTypes.func,
+  setReset: PropTypes.func
 }
 
 ColorSelection.defaultProps = {
@@ -68,7 +82,8 @@ ColorSelection.defaultProps = {
   setType: noop,
   cardOptions: [],
   option: {},
-  setOption: noop
+  setOption: noop,
+  setReset: noop
 }
 
 export default ColorSelection

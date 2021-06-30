@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Card from '../components/card'
 import allData from '../data'
-import {cloneDeep} from 'lodash'
+import {cloneDeep, noop} from 'lodash'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 
 const TWO_CARDS = '2-card'
 
-const CardView = ({type, color, option}) => {
+const CardView = ({type, color, option, resetClicked, setReset}) => {
   const data = cloneDeep(allData)
   const [currentCard, setCurrentCard] = useState(data[color.value][option.value])
   const [currentTwoCards, setCurrentTwoCards] = useState(data[color.value])
@@ -33,6 +33,23 @@ const CardView = ({type, color, option}) => {
       setCurrentCard({...selectedCard})
     }
   }, [isTwoCard, color, option])
+
+  useEffect(() => {
+    const data = cloneDeep(allData)
+    if (resetClicked) {
+      if (isTwoCard) {
+        const selectedCards = data[color.value]
+        setCurrentTwoCards({...selectedCards})
+      }
+      else {
+        const selectedCard = data[color.value][option.value]
+        setCurrentCard({...selectedCard})
+      }
+
+      setReset(false)
+    }
+
+  }, [resetClicked])
 
   const onClickColumn = (key, option) => {
     if (isTwoCard) {
@@ -83,13 +100,17 @@ const CardView = ({type, color, option}) => {
 CardView.propTypes = {
   type: PropTypes.object,
   color: PropTypes.object,
-  option: PropTypes.object
+  option: PropTypes.object,
+  resetClicked: PropTypes.bool,
+  setReset: PropTypes.func
 }
 
 CardView.defaultProps = {
   type: {},
   color: {},
-  option: {}
+  option: {},
+  resetClicked: false,
+  setReset: noop
 }
 
 export default CardView
