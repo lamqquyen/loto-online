@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components'
 import ColorSelection from '../color-selection';
 import CardView from '../card-view';
+import data from '../data'
+import {capitalize} from 'lodash'
 
 const Background = styled.div`
   background-image: url('https://vnn-imgs-f.vgcloud.vn/2019/07/19/17/uu-tien-xet-tuyen-nguoi-tai-vao-nganh-cong-an-1.JPG');
@@ -44,33 +46,6 @@ const TYPE_OPTIONS = [
 ]
 
 
-const COLORS = [
-  {
-    value: 'blue',
-    text: 'Blue'
-  },
-  {
-    value: 'red',
-    text: 'Red'
-  },
-  {
-    value: 'green',
-    text: 'Green'
-  },
-  {
-    value: 'purple',
-    text: 'Purple'
-  },
-  {
-    value: 'brown',
-    text: 'Brown'
-  },
-  {
-    value: 'navy',
-    text: 'Navy'
-  }
-]
-
 const CARD_OPTION = [
   {
     value: "cardA",
@@ -84,6 +59,14 @@ const CARD_OPTION = [
 
 
 const Main = () => {
+  const COLORS = []
+  for (let [key] of Object.entries(data)) {
+    COLORS.push({
+      value: key,
+      text: capitalize(key)
+    })
+  }
+
   const [type, setType] = useState(TYPE_OPTIONS[0])
   const [color, setColor] = useState(COLORS[0])
   const [option, setOption] = useState(CARD_OPTION[0])

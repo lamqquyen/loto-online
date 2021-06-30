@@ -38,6 +38,8 @@ const StyledOptionWrapper = styled.div`
   width: 100%;
   text-align: left;
   z-index: 10;
+  max-height: 280px;
+  overflow: auto;
 `
 
 const StyledOption = styled.div`
@@ -45,7 +47,7 @@ const StyledOption = styled.div`
   height: 35px;
   display: flex;
   align-items: center;
-
+  color: ${({setColor, value}) => setColor ? value : 'black'};
   &:hover {
     background: grey;
     color: white;
@@ -64,7 +66,7 @@ const StyledArrowDown = styled(ArrowDown)`
   right: 5px;
 `
 
-const Dropdown = ({label, options, selectedValue, onChangeData}) => {
+const Dropdown = ({label, options, selectedValue, onChangeData, setColor}) => {
   const [isDown, setDown] = useState(false)
 
   const selected = options.find((option) => option.value === selectedValue.value)
@@ -74,7 +76,8 @@ const Dropdown = ({label, options, selectedValue, onChangeData}) => {
         key={option.value}
         selected={option.value === selected.value}
         onClick={() => onChangeData(option)}
-        value={option.value}>
+        value={option.value}
+        setColor={setColor}>
         {option.text}
       </StyledOption>)
   })
@@ -100,14 +103,16 @@ Dropdown.propTypes = {
   label: PropTypes.string,
   options: PropTypes.array,
   selectedValue: PropTypes.object,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  setColor: PropTypes.bool
 }
 
 Dropdown.defaultProps = {
   label: '',
   options: [],
   selectedValue: {value: ''},
-  onChange: noop
+  onChange: noop,
+  setColor: false
 }
 
 

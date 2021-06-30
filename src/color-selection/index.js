@@ -36,6 +36,7 @@ const ColorSelection = (props) => {
       label='COLOR'
       selectedValue={color}
       onChangeData={setColor}
+      setColor
     />
     <Dropdown
       options={typeOptions}
