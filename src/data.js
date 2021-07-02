@@ -303,7 +303,7 @@ const data = {
       "2-3": { value: 38, isClicked: false },
       "2-4": { value: 44, isClicked: false },
       "2-6": { value: 60, isClicked: false },
-      "2-9": { value: 86, isClicked: false },
+      "2-8": { value: 86, isClicked: false },
       "3-0": { value: 8, isClicked: false },
       "3-2": { value: 22, isClicked: false },
       "3-4": { value: 47, isClicked: false },
