@@ -11,6 +11,10 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex: 5;
+
+  @media (max-width: 768px) {
+    flex: 2;
+  }
 `
 
 const TWO_CARDS = '2-card'

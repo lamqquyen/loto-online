@@ -38,12 +38,6 @@ const ColorSelection = (props) => {
       onChangeData={setColor}
       setColor
     />
-    <Dropdown
-      options={typeOptions}
-      label='TYPE'
-      selectedValue={type}
-      onChangeData={setType}
-    />
     {type.value === typeOptions[0].value && <Dropdown
       options={cardOptions}
       label='OPTION'

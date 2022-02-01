@@ -34,10 +34,19 @@ const Column = styled.td`
   &:nth-child(3n+3) {
     margin-bottom: 8px;
   }
+
+  @media (max-width: 768px) {
+    height: 40px;
+    width: 28px;
+  }
 `
 
 const Row = styled.tr`
   width: 40px;
+
+  @media (max-width: 768px) {
+    width: unset;
+  }
 `
 
 
