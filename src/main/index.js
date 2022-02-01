@@ -17,6 +17,11 @@ const Background = styled.div`
   left: 0px;
   width: 100vw;
   height: 100vh;
+
+  @media (max-width: 768px) {
+    overflow: auto;
+    flex-wrap: wrap;
+  }
 `
 
 const MainWrapper = styled.div`
@@ -31,6 +36,13 @@ const MainWrapper = styled.div`
   height: 80%;
   text-align: center;
   display: flex;
+
+  @media (max-width: 768px) {
+    height: auto;
+    flex-flow: column-reverse;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 
